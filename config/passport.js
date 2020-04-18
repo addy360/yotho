@@ -8,11 +8,35 @@ module.exports = (passport)=>{
 	    proxy:true
 	  },
 	  (accessToken, refreshToken, profile, cb)=> {
-	  	const { sub, name, picture, email } = profile._json
-	    // User.findOrCreate({ googleId: profile.id },  (err, user)=> {
-	    //   return cb(err, user);
-	    // });
+	  	const { sub, given_name, family_name, picture, email } = profile._json
+	    	User.findOne({googleId:sub})
+	    	.then(user=>{
+	    		if(user) return cb(null, user)
+	    		const newUser = {
+	    			googleId:sub,
+	    			first_name:given_name,
+	    			last_name:family_name,
+	    			email,picture
+	    		}
+	    		new User(newUser).save()
+	    		.then(user=>{
+	    			console.log(user)
+	    			cb(null,user)
+	    		})
+	    		.catch(err=>cb(err))
+	    	})
+	    	.catch(err=>cb(err))
 	  }
 	));
+
+	passport.serializeUser((user, done)=> {
+	  done(null, user.id);
+	});
+	 
+	passport.deserializeUser((id, done)=> {
+	  User.findById(id,  (err, user)=> {
+	    done(err, user);
+	  });
+	});
 
 }

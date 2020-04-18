@@ -3,7 +3,12 @@ exports.getGoogle = passport.authenticate('google',{
 	scope: ['profile','email'] 
 })
 
-exports.getGoogleCallback = passport.authenticate('google', { failureRedirect: '/login' })
+exports.getGoogleCallback = passport.authenticate('google', { failureRedirect: '/' })
 exports.getGoogleCallbackOnSuccess = (req, res, next)=>{
-	res.redirect('/');
+	res.redirect('/dashboard');
 } 
+
+exports.logout = (req, res, next)=>{
+	req.logout()
+	res.redirect('/')
+}

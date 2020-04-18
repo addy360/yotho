@@ -1,16 +1,29 @@
 const express = require('express')
 const passport = require('passport')
 const mongoose = require("mongoose")
+const session = require('express-session')
 
 const authRoutes = require('./routes/authRoutes')
-
+const globalVars = require('./middlewares/globalvars')
 const app = express()
+
 
 // passport
 require('./config/passport')(passport)
+app.use(session({
+  secret: 'supersecretkeyword',
+  resave: false,
+  saveUninitialized: false,
+}))
+
+
+app.use(passport.initialize());
+app.use(passport.session());
 app.get("/",(req, res, next)=>{
 	res.send("Welcome")
 })
+
+app.use(globalVars)
 
 app.use('/auth', authRoutes)
 
