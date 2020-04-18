@@ -1,0 +1,38 @@
+  <nav class="grey darken-3">
+    <div class="nav-wrapper">
+	    <div class="container">
+	      <a href="/stories" class="brand-logo center">Yotho</a>
+	      <!-- <a href="#" data-activates="main-menu" class="button-collapse show-on-large left"><i class="fas fa-bars"></i></a> -->
+		  <a href="#" data-target="main-menu" class="sidenav-trigger show-on-large left"><i class="material-icons">menu</i></a>
+	      <ul id="nav-mobile" class="right hide-on-small-only">
+	      	{{#if user}}
+	        	<li><a href="/dashboard"><i class="fas fa-tachometer-alt left"></i> welcome {{ first_name }}</a></li>
+	        	<li><a href="/auth/logout"><i class="fas fa-sign-out-alt"></i></a></li>
+	      	{{else}}
+	        	<li><a href="/stories"><i class="fas fa-book-reader"></i> Public stories</a></li>
+	      	{{/if}}
+	      </ul>
+	      <ul id="main-menu" class="sidenav">
+	      	{{#if user}}
+			    <li>
+			    	<div class="user-view">
+				      <div class="background">
+				        <img src="{{ picture }}">
+				      </div>
+				      <a href="#"><img class="circle" src="{{picture}}"></a>
+				      <a href="#"><span class="white-text name">{{ first_name}} {{" "}} {{ last_name }}</span></a>
+				      <a href="#"><span class="white-text email">{{ email }}</span></a>
+			    	</div>
+				</li>
+				<li><a href="/auth/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+		    	<li><a href="/dashboard"><i class="fas fa-cog"></i> Dashboard</a></li>
+		    	<li><a href="/stories"><i class="fas fa-user"></i> My stories</a></li>
+		    {{else}}
+				<li><a href="/auth/google" class="btn waves-effect red darken-2"><i class="fab fa-google left"></i> Login with google</a></li>
+		    {{/if}}
+		    <li><div class="divider"></div></li>
+		    <li><a href="/stories"><i class="fas fa-book-reader"></i> public stories</a></li>
+		  </ul>
+	    </div>
+    </div>
+  </nav>
