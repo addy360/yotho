@@ -1,0 +1,29 @@
+
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+ #text-card{
+	height: 120px;
+}
+
+#post-status{
+	text-transform: capitalize;
+}
+
+.btn-block{
+	display: block;
+	width: 100%;
+	margin: auto;
+}
+
+#dashboard-action, #dashboard-action col, #dashboard-action form{
+  padding: 0 !important;
+  margin: 0 !important;
+}

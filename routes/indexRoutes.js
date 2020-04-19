@@ -1,8 +1,11 @@
 const router = require('express').Router()
-const { getIndex, getDashboard } = require('../controllers/indexController')
+const { getIndex, getAbout, getDashboard } = require('../controllers/indexController')
 
-router.get('/', getIndex)
-router.get('/dashboard', getDashboard)
+const { isAuth, isGuest } = require('../middlewares/isAuth')
+
+router.get('/', isGuest, getIndex)
+router.get('/about', getAbout)
+router.get('/dashboard', isAuth, getDashboard)
 
 
 

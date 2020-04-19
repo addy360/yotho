@@ -1,0 +1,49 @@
+<section>
+	<div class="row">
+		<div class="col s12">
+			<div class="card-panel">
+				<h4 class="center">Edit story</h4>
+				<form action="/stories/edit" method="post">
+					<input type="hidden" name="id" value="{{data._id}}">
+					  <div class="row">
+					    <div class="input-field">
+				          <input id="title" name="title" type="text" value="{{ data.title }}" class="validate">
+				          <label for="title">Title</label>
+				        </div>
+					  </div>
+					  <div class="row">
+					      <div class="input-field">
+					        <select name="status">
+					          {{#select data.status}}
+					            <option value="public" selected>Public</option>
+					            <option value="private">Private</option>
+					            <option value="unpublished">Unpublished</option>
+					          {{/select}}
+					        </select>
+					        <label for="status">Status</label>
+					      </div>
+					    </div>
+					  <div class="row">
+					  	  	<p>
+					  	      <label>
+						        <input type="checkbox" class="filled-in" name="allow_comments" {{#if data.allow_comments}} checked="checked" {{/if}}/>
+						        <span>Allow comments</span>
+						      </label>
+						    </p>
+					  </div>
+					  <div class="row">
+					    <div class="input-field">
+					      <h5>Your Thoughts</h5>
+				          <textarea id="body" class="materialize-textarea" name="body" class="validate">
+				          	{{data.body}}
+				          </textarea>
+				        </div>
+					  </div>
+					  <div class="row">
+					  	<input type="submit" value="Save" class="btn green darken-2 right">
+					  </div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

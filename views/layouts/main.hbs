@@ -4,21 +4,25 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   
   <title>Yotho | Your Thoughts</title>
 </head>
 <body>
   {{> nav}}
-  <div class="container">
-    {{{body}}}
-  </div>
+  <main>
+    <div class="container">
+      {{{body}}}
+    </div>
+  </main>
+  {{#if user}}
+    {{> fab}}
+  {{/if}}
+  {{> footer}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-        $(document).ready(function(){
-          $('.sidenav').sidenav();
-        });
-    </script>
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
 </body>
 </html>

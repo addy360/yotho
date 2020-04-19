@@ -1,0 +1,43 @@
+<section>
+	<h4>Welcome {{first_name}}</h4>
+	<h6>Your stories...</h6>
+	{{#if data}}
+	<table class="striped">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each data}}
+				<tr>
+					<td><a href="/stories/show/{{story._id}}">{{story.title}}</a></td>
+					<td><span id="post-status">{{story.status}}</span></td>
+					<td>{{ dateFormatter story.date "MMMM Do YYYY"}}</td>
+					<td>
+						<div id="dashboard-action" class="row">
+							<div class="col s6">
+								<form method="get" action="/stories/edit/{{story._id}}">
+									<button type="submit" class="btn btn-block waves-effect btn-small green darken-1"><i class="fas fa-pencil-alt"></i></button>
+								</form>
+							</div>
+							<div class="col s6">
+								<form method="post" action="/stories/delete">
+									<input type="hidden" name="id" value="{{story._id}}">
+									<button type="submit" class="btn btn-block waves-effect btn-small red darken-1"><i class="fas fa-trash-alt"></i></button>
+								</form>
+							</div>
+							
+						</div>
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+	{{else}}
+	<p>Ooops... Seems like you currently have no any story</p>
+	{{/if}}
+</section>
