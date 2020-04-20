@@ -20,7 +20,6 @@ module.exports = (passport)=>{
 	    		}
 	    		new User(newUser).save()
 	    		.then(user=>{
-	    			console.log(user)
 	    			cb(null,user)
 	    		})
 	    		.catch(err=>cb(err))

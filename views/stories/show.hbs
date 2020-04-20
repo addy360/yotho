@@ -7,6 +7,46 @@
 				{{{body}}}
 			</div>
 		</div>
+		{{#if allow_comments}}
+			  <ul class="collapsible">
+			    <li>
+			      <div class="collapsible-header"><i class="fas fa-comments"></i> Comments</div>
+			      
+			      <div class="collapsible-body">
+			      	{{#if comments}}
+			      		<ul class="collection" id="comments">
+			      			{{#each comments}}
+						    	<li class="collection-item">
+							      <div class="card-panel">
+							      	<blockquote>{{comment.comentBody}}.</blockquote>
+							      	<br>
+							      	  <div class="chip">
+									    <img src={{ comment.userPicture }} alt="{{comment.userFname}}">
+									    {{comment.userFname}} {{comment.userLname}}
+									  </div>
+									  <small class="right">
+									  	Posted {{ dateFormatter comment.comentDate "MMMM Do YYYY"}}
+									  </small>
+							      </div>
+						    	</li>
+						    {{/each}}
+  						</ul>
+			      	{{/if}}
+			      	{{#if user}}
+			      		<form action="/stories/comment" method="POST">
+			      			<div class="input-field">
+			      				<textarea name="comment" class="materialize-textarea"></textarea>
+			      			</div>
+			      			<input type="hidden" name="post_id" value={{id}}>
+			      			<button type="submit" class="btn btn-small green darken-1">comment</button>
+			      		</form>
+			      	{{else}}
+			      		<span><a href="/auth/google">Login</a> to leave a comment</span>
+			      	{{/if}}
+			      </div>
+			    </li>
+			  </ul>
+		{{/if}}
 	</div>
 	<div class="col s12 m3">
 		<div class="card center">

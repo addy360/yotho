@@ -22,3 +22,15 @@ exports.select = (selected,options)=>{
 	    return options.fn(this).replace( new RegExp(' value=\"' + selected + '\"'), '$& selected="selected"').replace( new RegExp('>' + selected + '</option>'), ' selected="selected"$&');
 
 }
+
+exports.editIcon = (storyUser, loggedUser, storyId, floating = true)=>{
+    if(storyUser == loggedUser){
+      if(floating){
+        return `<a href="/stories/edit/${storyId}" class="btn-floating halfway-fab red"><i class="fas fa-pencil-alt"></i></a>`;
+      } else {
+        return `<a href="/stories/edit/${storyId}"><i class="fas fa-pencil-alt"></i></a>`;
+      }
+    } else {
+      return '';
+    }
+  }

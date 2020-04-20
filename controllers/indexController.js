@@ -15,11 +15,10 @@ exports.getDashboard = (req, res, next)=>{
 			const { allow_comments, _id, status, title, body, comments, date } = str
 			data.push({story:{_id, allow_comments, status, title, body, comments, date}})
 		})
-		console.log(data)
 		res.render("index/dashboard",{data})
 	})
 	.catch(err=>{
-		res.render("index/dashboard")
+		next(err)
 		console.log(err)
 	})
 }

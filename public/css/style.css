@@ -27,3 +27,13 @@
   padding: 0 !important;
   margin: 0 !important;
 }
+
+#comments, #comments .collection-item, #comments .card-panel{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#comments blockquote{
+  margin: 0 !important;
+  
+}

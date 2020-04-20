@@ -1,14 +1,16 @@
 const router = require('express').Router()
-const { getIndex, getAdd, postAdd, getShow, deletePost, postEdit, getEdit } = require('../controllers/storiesController')
-const { isAuth } = require('../middlewares/isAuth')
+const { getIndex, getAdd, postAdd, getUserStories, getShow, deletePost, postEdit, getEdit, postComment } = require('../controllers/storiesController')
+const { isAuth, storyOwner } = require('../middlewares/isAuth')
 
 router.get('/', getIndex)
 router.get('/add', getAdd)
 router.get('/show/:id', getShow)
-router.get('/edit/:id', getEdit)
-router.post('/add', postAdd)
-router.post('/edit', postEdit)
-router.post('/delete', deletePost)
+router.get('/user/:id',getUserStories )
+router.get('/edit/:id',isAuth, storyOwner, getEdit)
+router.post('/add', isAuth, postAdd)
+router.post('/edit',isAuth, storyOwner, postEdit)
+router.post('/comment', postComment)
+router.post('/delete',isAuth, storyOwner, deletePost)
 
 
 

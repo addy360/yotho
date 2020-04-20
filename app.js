@@ -9,11 +9,11 @@ const authRoutes = require('./routes/authRoutes')
 const indexRoutes = require('./routes/indexRoutes')
 const storyRoutes = require('./routes/storyRoutes')
 const globalVars = require('./middlewares/globalvars')
-const { truncate, stripTags, dateFormatter, select } = require('./helpers/hbs')
+const { truncate, stripTags, dateFormatter, select, editIcon } = require('./helpers/hbs')
 const app = express()
 
 // handlebars
-app.engine('.hbs', exphbs({extname: '.hbs', helpers:{truncate, stripTags, dateFormatter, select}}))
+app.engine('.hbs', exphbs({extname: '.hbs', helpers:{truncate,editIcon, stripTags, dateFormatter, select}}))
 app.set('view engine', '.hbs');
 
 // static assets
